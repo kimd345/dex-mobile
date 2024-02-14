@@ -17,7 +17,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.dex-mobile"
+      "bundleIdentifier": "com.kimd345.dex-mobile"
     },
     "android": {
       "adaptiveIcon": {
@@ -38,7 +38,13 @@
         {
           "launchModeExperimental": "most-recent"
         }
-      ]
+      ],
+      [
+				"react-native-auth0",
+				{
+					"domain": "uniqr.us.auth0.com"
+				}
+			]
     ],
     "experiments": {
       "typedRoutes": true
