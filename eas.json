@@ -4,19 +4,29 @@
   },
   "build": {
     "development": {
-			"developmentClient": true,
-			"distribution": "internal",
-			"ios": {
-				"simulator": true
-			}
-		},
-    "preview": {
-			"distribution": "internal",
-			"ios": {
-				"simulator": true
-			}
-		},
-    "production": {}
+      "developmentClient": true,
+      "env": {
+        "ENVIRONMENT": "development"
+      },
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      }
+    },
+    "staging": {
+      "env": {
+        "ENVIRONMENT": "staging"
+      },
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      }
+    },
+    "production": {
+      "env": {
+        "ENVIRONMENT": "production"
+      }
+    }
   },
   "submit": {
     "production": {}

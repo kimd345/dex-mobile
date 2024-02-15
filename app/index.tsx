@@ -6,11 +6,11 @@
  * @flow strict-local
  */
 
-import React, { useState } from "react";
-import { Alert, Button, StyleSheet, Text, View } from "react-native";
-import Auth0 from "react-native-auth0";
+import React, { useState } from 'react';
+import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import Auth0 from 'react-native-auth0';
 
-import config from "../auth0-configuration";
+import config from '../auth0-configuration';
 const auth0 = new Auth0(config);
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
     auth0.webAuth
       .authorize()
       .then((credentials) => {
-        Alert.alert("AccessToken: " + credentials.accessToken);
+        Alert.alert('AccessToken: ' + credentials.accessToken);
         setAccessToken(credentials.accessToken);
       })
       .catch((error) => console.log(error));
@@ -30,23 +30,20 @@ const App = () => {
     auth0.webAuth
       .clearSession({})
       .then(() => {
-        Alert.alert("Logged out!");
+        Alert.alert('Logged out!');
         setAccessToken(null);
       })
       .catch(() => {
-        console.log("Log out cancelled");
+        console.log('Log out cancelled');
       });
   };
 
   const loggedIn = accessToken !== null;
   return (
-    <View style={styles.container}>
+    <View className="flex-1 justify-center items-center bg-slate-500">
       <Text style={styles.header}> Auth0Sample - Login </Text>
-      <Text>You are{loggedIn ? " " : " not "}logged in. </Text>
-      <Button
-        onPress={loggedIn ? onLogout : onLogin}
-        title={loggedIn ? "Log Out" : "Log In"}
-      />
+      <Text>You are{loggedIn ? ' ' : ' not '}logged in. </Text>
+      <Button onPress={loggedIn ? onLogout : onLogin} title={loggedIn ? 'Log Out' : 'Log In'} />
     </View>
   );
 };
@@ -54,13 +51,13 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
   header: {
     fontSize: 20,
-    textAlign: "center",
+    textAlign: 'center',
     margin: 10,
   },
 });
