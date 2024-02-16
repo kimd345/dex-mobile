@@ -55,7 +55,6 @@ function RootLayoutNav() {
           <Stack.Screen name="sign-in" options={{ headerShown: false }} />
         </Stack> */}
         <Stack>
-          <Stack.Screen name="(app)" options={{ headerShown: false }} />
           <Stack.Screen name="sign-in" options={{ headerShown: false }} />
         </Stack>
       </Auth0Provider>
