@@ -1,21 +1,14 @@
 import { router } from 'expo-router';
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Text, View } from 'react-native';
 import { useAuth0 } from 'react-native-auth0';
 
 const SignIn = () => {
-  const { authorize, isLoading, hasValidCredentials, user } = useAuth0();
-  (async () => {
-    const isValidCredentials = await hasValidCredentials();
-    // console.log('isValidCredentials: ', isValidCredentials);
-    // if (isValidCredentials) router.replace('/(app)');
-  })();
-  console.log('user', user);
+  const { authorize, user } = useAuth0();
 
   const onLogin = async () => {
     try {
       await authorize({ additionalParameters: { prompt: 'login' } }).then((credentials) => {
-        // Alert.alert('AccessToken: ' + credentials.accessToken);
         if (credentials?.accessToken !== null) {
           router.replace('/(app)');
         }
