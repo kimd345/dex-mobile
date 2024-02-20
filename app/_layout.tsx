@@ -9,6 +9,7 @@ import { Auth0Provider } from 'react-native-auth0';
 import config from '@/auth/auth0-configuration';
 import { useColorScheme } from '@/components/useColorScheme';
 import '../global.css';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -49,10 +50,12 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Auth0Provider domain={config.domain} clientId={config.clientId}>
-        <Slot />
-      </Auth0Provider>
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Auth0Provider domain={config.domain} clientId={config.clientId}>
+          <Slot />
+        </Auth0Provider>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }

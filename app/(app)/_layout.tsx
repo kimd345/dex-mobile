@@ -1,9 +1,11 @@
 import { Redirect, Tabs } from 'expo-router';
 import { View } from 'react-native';
 import { useAuth0 } from 'react-native-auth0';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function AppLayout() {
   const { user, isLoading } = useAuth0();
+  const insets = useSafeAreaInsets();
 
   // If the user is still loading, return null.
   if (isLoading) return <></>;
@@ -12,7 +14,7 @@ export default function AppLayout() {
   if (!user) return <Redirect href={'/sign-in' as any} />;
 
   return (
-    <View className="flex-1">
+    <View style={{ flex: 1, paddingTop: insets.top }}>
       <Tabs screenOptions={{ headerShown: false }} />
     </View>
   );
