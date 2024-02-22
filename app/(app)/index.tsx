@@ -1,4 +1,4 @@
-import { Link, router } from 'expo-router';
+import { Link } from 'expo-router';
 import { Button } from 'react-native';
 import { useAuth0 } from 'react-native-auth0';
 

@@ -5,11 +5,11 @@ import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { Auth0Provider } from 'react-native-auth0';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import config from '@/auth/auth0-configuration';
 import { useColorScheme } from '@/components/useColorScheme';
 import '../global.css';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export {
   // Catch any errors thrown by the Layout component.
