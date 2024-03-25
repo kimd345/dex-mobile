@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link, Tabs } from 'expo-router';
-
-import { Text, View } from '@/components/Themed';
+import { Text, View } from 'react-native';
 
 export default function SecondPage() {
   const query = useQuery({

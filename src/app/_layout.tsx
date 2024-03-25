@@ -4,13 +4,13 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { useFonts } from 'expo-font';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
+import { useColorScheme } from 'nativewind';
 import { useEffect } from 'react';
 import { Auth0Provider } from 'react-native-auth0';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import config from '@/auth/auth0-configuration';
-import { useColorScheme } from '@/components/useColorScheme';
-import '../global.css';
+import config from '@/src/auth/auth0-configuration';
+import '@/src/global.css';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -55,11 +55,11 @@ function RootLayoutNav() {
   return (
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider>
-        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        {/* <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}> */}
           <Auth0Provider domain={config.domain} clientId={config.clientId}>
             <Slot />
           </Auth0Provider>
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </SafeAreaProvider>
     </QueryClientProvider>
   );

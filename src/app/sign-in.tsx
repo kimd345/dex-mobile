@@ -21,7 +21,7 @@ const SignIn = () => {
   return (
     <View className="flex-1 justify-center items-center bg-slate-400">
       <Text> UNIQR Sign In </Text>
-      <Text>{user?.name || 'null'}</Text>
+      <Text>{user?.name ?? 'null'}</Text>
       <Button onPress={onLogin} title="Log In" />
     </View>
   );
