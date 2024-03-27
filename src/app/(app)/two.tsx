@@ -1,28 +1,24 @@
-import { useQuery } from '@tanstack/react-query';
-import { Link, Tabs } from 'expo-router';
-import { Text, View } from 'react-native';
+import { Link } from 'expo-router';
+import { useColorScheme } from 'nativewind';
+import { Button, Switch, Text, View } from 'react-native';
+import { useAuth0 } from 'react-native-auth0';
 
 export default function SecondPage() {
-  const query = useQuery({
-    queryKey: ['scroll'],
-    queryFn: async () => {
-      const response = await fetch('http://localhost:8080/dex/load/t3g/c0f');
-      return response.json();
-    },
-  });
-
-  console.log(query.failureReason);
+  const { colorScheme, toggleColorScheme } = useColorScheme();
+  const { clearCredentials } = useAuth0();
+  const onLogout = async () => {
+    await clearCredentials();
+  };
+  console.log('colorScheme', colorScheme);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <Text>{query.data}</Text>
+    <View className="flex-1 justify-center items-center gap-4">
+      <View className="flex-row justify-center items-center">
+        <Text>Toggle Theme</Text>
+        <Switch value={colorScheme === 'dark'} onChange={toggleColorScheme} />
+      </View>
       <Link href="/(app)">Go to the first page</Link>
-      <Tabs />
+      <Button onPress={onLogout} title="Log Out" />
     </View>
   );
 }

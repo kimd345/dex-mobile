@@ -1,5 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+// import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { useFonts } from 'expo-font';
 import { Slot } from 'expo-router';
@@ -9,7 +9,9 @@ import { useEffect } from 'react';
 import { Auth0Provider } from 'react-native-auth0';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import config from '@/src/auth/auth0-configuration';
+import config from '@/src/common/auth/auth0-configuration';
+import { ThemeProvider } from '@/src/common/providers/ThemeProviders';
+
 import '@/src/global.css';
 
 export {
@@ -55,7 +57,7 @@ function RootLayoutNav() {
   return (
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider>
-        {/* <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}> */}
+        {/* <ThemeProvider> */}
           <Auth0Provider domain={config.domain} clientId={config.clientId}>
             <Slot />
           </Auth0Provider>
