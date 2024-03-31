@@ -10,7 +10,7 @@ const SignIn = () => {
     try {
       await authorize({ additionalParameters: { prompt: 'login' } }).then((credentials) => {
         if (credentials?.accessToken !== null) {
-          router.replace('/(app)');
+          router.replace('/(tabs)'); // Fix: Change the argument to a valid value.
         }
       });
     } catch (e) {

@@ -9,8 +9,8 @@ import { useEffect } from 'react';
 import { Auth0Provider } from 'react-native-auth0';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import config from '@/src/common/auth/auth0-configuration';
-import { ThemeProvider } from '@/src/common/providers/ThemeProviders';
+import config from '@/src/shared/auth/auth0-configuration';
+import { ThemeProvider } from '@/src/shared/providers/ThemeProviders';
 
 import '@/src/global.css';
 
@@ -35,6 +35,8 @@ export default function RootLayout() {
     ...FontAwesome.font,
   });
 
+  const colorScheme = useColorScheme();
+
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
     if (error) throw error;
@@ -48,19 +50,13 @@ export default function RootLayout() {
     return null;
   }
 
-  return <RootLayoutNav />;
-}
-
-function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-
   return (
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider>
         {/* <ThemeProvider> */}
-          <Auth0Provider domain={config.domain} clientId={config.clientId}>
-            <Slot />
-          </Auth0Provider>
+        <Auth0Provider domain={config.domain} clientId={config.clientId}>
+          <Slot />
+        </Auth0Provider>
         {/* </ThemeProvider> */}
       </SafeAreaProvider>
     </QueryClientProvider>

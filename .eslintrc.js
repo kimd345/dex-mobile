@@ -9,4 +9,8 @@ module.exports = {
       },
     },
   ],
+  rules: {
+    // for scroll.jsx
+    'object-shorthand': 'off',
+  },
 };
